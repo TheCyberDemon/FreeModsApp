@@ -17,7 +17,7 @@ path = str(os.getcwd()) + '/'
 
 def uploader():
     SESSION = requests.session()
-    FILE_NAME = os.listdir(path + "file/")[1]
+    FILE_NAME = os.listdir(path + "file/")[0]
 
     LOGIN_URL = 'https://zeus.protondns.net:2083/login/?login_only=1'
     LOGIN_HEADERS = {
