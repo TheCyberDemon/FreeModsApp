@@ -171,7 +171,9 @@ async def my_event_handler(event):
             await client.send_message(int(sender), 'You had not sent a file')
         else:
             if str(event.file.name).endswith("apk"):
-            	name = str(event.file.name)
+                await event.reply("processing please wait...")
+            	name1 = str(event.file.name)
+                name = "_".join(name1.split())
             	await event.download_media(path + "file/" + name)
             	link = uploader()
             	await event.reply(link)
