@@ -115,9 +115,8 @@ def uploader():
 
 api_id = '1813732'
 api_hash = 'd5f978c1b3693624b16a7d18a62ea0e8'
-#bot_token = '5129832437:AAG6gNe48f7YB5xe3roFQEWh9LtdPqf84Eg'
+bot_token = '5129832437:AAG6gNe48f7YB5xe3roFQEWh9LtdPqf84Eg'
 
-bot_token = "5043417781:AAHbpBjVnIPyWMG6KqV9AwxQ421oBuVvROs"
 
 sudo = [1476503457, 903563890, 2113131426]
 approved_useers = []
