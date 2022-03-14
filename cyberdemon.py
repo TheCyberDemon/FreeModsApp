@@ -19,7 +19,7 @@ path = str(os.getcwd()) + '/'
 def uploader(FILE_NAME=False):
     SESSION = requests.session()
     if not FILE_NAME:
-        FILE_NAME = os.listdir(path + "\\file\\")[0]
+        FILE_NAME = os.listdir(path + "file/")[0]
     else:
         pass
     print(FILE_NAME)
@@ -123,7 +123,7 @@ def uploader(FILE_NAME=False):
     print(FILE_NAME)
     LINK = 'https://freemodsapp-files.xyz/download/' + FILE_NAME
 
-    # os.remove(path + "\\file\\" + FILE_NAME)
+    # os.remove(path + "file/" + FILE_NAME)
 
     return LINK
 
@@ -191,7 +191,7 @@ async def my_event_handler(event):
                 name = "_".join(name1.split())
                 await event.reply("processing please wait...")
                 print("file:", name)
-                sed = await event.download_media(path + "\\file\\" + name)
+                sed = await event.download_media(path + "file/" + name)
                 sed = str(sed)[16::]
                 print(sed)
                 link = uploader(sed)
