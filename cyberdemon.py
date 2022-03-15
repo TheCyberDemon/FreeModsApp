@@ -25,6 +25,11 @@ def uploader(FILE_NAME=False):
     print(FILE_NAME)
     print("Main Dir: "+str(os.listdir(path)))
     print("File Dir: "+str(os.listdir(path + "file/")))
+    
+    cwd = os.getcwd() 
+    files = os.listdir(cwd) 
+    print("Files in %r: %s" % (cwd, files))
+
     LOGIN_URL = 'https://zeus.protondns.net:2083/login/?login_only=1'
     LOGIN_HEADERS = {
         'Host': 'zeus.protondns.net:2083',
@@ -201,4 +206,6 @@ async def my_event_handler(event):
                 await event.reply("only APK's are allow")
 
 print("ok")
+print(os.getcwd())
+print(os.path.dirname(__file__))
 client.run_until_disconnected()
