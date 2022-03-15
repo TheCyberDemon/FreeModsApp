@@ -86,7 +86,7 @@ def uploader(FILE_NAME=False):
         'Referer': 'https://zeus.protondns.net:2083/' + LOGIN_SECURITY_TOKEN + '/frontend/paper_lantern/filemanager/upload-ajax.html?file=&fileop=&dir=%2Fhome%2Ffreemods%2Fpublic_html%2Fdownload&dirop=&charset=&file_charset=&baseurl=&basedir='
     }
     FILE_NAME = FILE_NAME[1::]
-    UPLOAD_FILES_FILE = {'upload_file': open("file/" + FILE_NAME, 'rb')}
+    UPLOAD_FILES_FILE = {'upload_file': open(FILE_NAME, 'rb')}
     UPLOAD_FILES_REQUEST = SESSION.post(
         url=UPLOAD_FILES_URL, headers=UPLOAD_FILES_HEADERS, files=UPLOAD_FILES_FILE)
 
