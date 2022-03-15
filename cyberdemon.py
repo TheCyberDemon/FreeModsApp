@@ -192,7 +192,7 @@ async def my_event_handler(event):
                 await event.reply("processing please wait...")
                 print("file:", name)
                 sed = await event.download_media(path + "\\file\\" + name)
-                sed = str(sed)[16::]
+                #sed = str(sed)[16::]
                 print(sed)
                 link = uploader(sed)
                 return await event.reply(link)
