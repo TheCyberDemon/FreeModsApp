@@ -16,19 +16,15 @@ except:
 path = str(os.getcwd()) + '/'
 
 
-def uploader(FILE_NAME=False):
+def uploader(p, FILE_NAME=""):
     SESSION = requests.session()
+    
     if not FILE_NAME:
         FILE_NAME = os.listdir(path + "file/")[0]
-    else:
-        pass
+
     print(FILE_NAME)
     print("Main Dir: "+str(os.listdir(path)))
     print("File Dir: "+str(os.listdir(path + "file/")))
-    
-    cwd = os.getcwd() 
-    files = os.listdir(cwd) 
-    print("Files in %r: %s" % (cwd, files))
 
     LOGIN_URL = 'https://zeus.protondns.net:2083/login/?login_only=1'
     LOGIN_HEADERS = {
@@ -91,8 +87,8 @@ def uploader(FILE_NAME=False):
         'Connection': 'keep-alive',
         'Referer': 'https://zeus.protondns.net:2083/' + LOGIN_SECURITY_TOKEN + '/frontend/paper_lantern/filemanager/upload-ajax.html?file=&fileop=&dir=%2Fhome%2Ffreemods%2Fpublic_html%2Fdownload&dirop=&charset=&file_charset=&baseurl=&basedir='
     }
-    FILE_NAME = FILE_NAME[1::]
-    UPLOAD_FILES_FILE = {'upload_file': open(FILE_NAME, 'rb')}
+    #FILE_NAME = FILE_NAME[1::]
+    UPLOAD_FILES_FILE = {'upload_file': open(p, 'rb')}
     UPLOAD_FILES_REQUEST = SESSION.post(
         url=UPLOAD_FILES_URL, headers=UPLOAD_FILES_HEADERS, files=UPLOAD_FILES_FILE)
 
@@ -129,7 +125,7 @@ def uploader(FILE_NAME=False):
     print(FILE_NAME)
     LINK = 'https://freemodsapp-files.xyz/download/' + FILE_NAME
 
-    # os.remove(path + "file/" + FILE_NAME)
+    os.remove(p)
 
     return LINK
 
@@ -197,15 +193,13 @@ async def my_event_handler(event):
                 name = "_".join(name1.split())
                 await event.reply("processing please wait...")
                 print("file:", name)
-                sed = await event.download_media(path + "file/" + name)
+                sed = await event.download_media("./")
                 #sed = str(sed)[16::]
                 print(sed)
-                link = uploader(sed)
+                link = uploader(sed, name)
                 return await event.reply(link)
             else:
                 await event.reply("only APK's are allow")
 
 print("ok")
-print(os.getcwd())
-print(os.path.dirname(__file__))
 client.run_until_disconnected()
