@@ -195,7 +195,7 @@ async def my_event_handler(event):
                 name = re.sub(r"[\([{})\]]", "", name2)
                 await event.reply("processing please wait...")
                 print("file:", name)
-                sed = await event.download_media("./")
+                sed = await event.download_media("./", name)
                 #sed = str(sed)[16::]
                 print(sed)
                 link = uploader(sed, name)
