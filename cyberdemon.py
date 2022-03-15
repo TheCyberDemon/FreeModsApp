@@ -1,6 +1,6 @@
 import os
 import json
-import urllib
+import re
 
 try:
     from telethon import *
@@ -191,7 +191,8 @@ async def my_event_handler(event):
         else:
             if str(event.file.name).endswith("apk"):
                 name1 = str(event.file.name)
-                name = urllib.parse.quote("_".join(name1.split()))
+                name2 = "_".join(name1.split())
+                name = re.sub(r"[\([{})\]]", "", name2)
                 await event.reply("processing please wait...")
                 print("file:", name)
                 sed = await event.download_media("./")
