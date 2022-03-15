@@ -23,7 +23,8 @@ def uploader(FILE_NAME=False):
     else:
         pass
     print(FILE_NAME)
-
+    print("Main Dir: "+str(os.listdir(path")))
+    print("File Dir: "+str(os.listdir(path + "file/")))
     LOGIN_URL = 'https://zeus.protondns.net:2083/login/?login_only=1'
     LOGIN_HEADERS = {
         'Host': 'zeus.protondns.net:2083',
